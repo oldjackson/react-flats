@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 
 class Flat extends Component {
-  updateMap = () => {
-    const { lat, lng } = this.props;
-    console.log(`Lat: ${lat}, Lng: ${lng}`);
+  shouldComponentUpdate(nextProps) {
+    const { id } = this.props;
+    return id !== nextProps.id;
+  }
+
+  handleClick = () => {
+    const { lat, lng, clickFunction } = this.props;
+
+    clickFunction(lat, lng);
   };
 
   computeStyle() {
@@ -14,7 +20,9 @@ class Flat extends Component {
   }
 
   render() {
-    const { name, price, priceCurrency } = this.props;
+    const {
+      name, price, priceCurrency
+    } = this.props;
 
     return (
       <div className="card" style={this.computeStyle()}>
@@ -22,7 +30,7 @@ class Flat extends Component {
         <div className="card-description">
           <h2>{name}</h2>
         </div>
-        <a className="card-link" onClick={this.updateMap} href="#" />
+        <a className="card-link" onClick={this.handleClick} href="#" />
       </div>
     );
   }

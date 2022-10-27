@@ -2,7 +2,7 @@
 import React from 'react';
 import Flat from './flat';
 
-function FlatList({ flats }) {
+function FlatList({ flats, clickFunction }) {
   return (
     <div className="flat-list">
       {
@@ -18,6 +18,8 @@ function FlatList({ flats }) {
               lat={lat}
               lng={lng}
               key={id}
+              id={id}
+              clickFunction={clickFunction}
             />
           )
         )
