@@ -1,9 +1,7 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 
-function AnyReactComponent({ text }) {
-  return <div className="marker">{text}</div>;
-}
+import Marker from './marker';
 
 export default function SimpleMap(props) {
   const { flats } = props;
@@ -13,7 +11,7 @@ export default function SimpleMap(props) {
       lat: flats[0].lat,
       lng: flats[0].lng
     },
-    zoom: 11
+    zoom: 12
   };
 
   return (
@@ -28,7 +26,7 @@ export default function SimpleMap(props) {
           ({
             id, lat, lng, price, priceCurrency
           }) => (
-            <AnyReactComponent
+            <Marker
               lat={lat}
               lng={lng}
               text={`${price} ${priceCurrency}`}
